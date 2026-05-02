@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anomaly Target Detection in Hyperspectral Images</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <!-- Particle Canvas -->
+    <canvas id="particles"></canvas>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confetti"></canvas>
+
+    <header>
+        <h1><i class="fas fa-satellite"></i> Anomaly Target Detection in Hyperspectral Images</h1>
+        <p>Department of Computer Engineering | Dr. D. Y. Patil COEI, Pune</p>
+        <p><strong>Team:</strong> Kartik Ghule, Om Gonjari, Shankar Gawali, Mahesh Pawar | <strong>Guide:</strong> Dr. Suresh Mali</p>
+    </header>
+
+    <nav id="main-nav">
+        <button class="mobile-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#about" id="nav-about" onclick="toggleMobileMenu()">
+                <i class="fas fa-info-circle"></i> About Project
+            </a>
+            <a href="#method" id="nav-method" onclick="toggleMobileMenu()">
+                <i class="fas fa-cogs"></i> Methodology
+            </a>
+            <a href="#detect" id="nav-detect" onclick="toggleMobileMenu()">
+                <i class="fas fa-eye"></i> Live Detector
+            </a>
+            <a href="#contact" id="nav-contact" onclick="toggleMobileMenu()">
+                <i class="fas fa-rocket"></i> Future Work
+            </a>
+            <a href="project-report.pdf" target="_blank" onclick="toggleMobileMenu()">
+                <i class="fas fa-download"></i> Download Report
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="about">
+            <h2 class="title">
+                <i class="fas fa-exclamation-triangle"></i> Problem Statement & Background
+            </h2>
+            <p class="content">
+                Hyperspectral Imaging (HSI) provides a rich <strong>"spectral signature"</strong> for every pixel, making it powerful for identification. 
+                However, <strong>detecting hidden or unusual objects (anomalies/targets)</strong> is computationally challenging due to the massive data volume and inherent noise. 
+                Our system provides a <strong>robust automated detection solution</strong> using advanced ML/DL techniques to achieve high accuracy and efficiency.
+            </p>
+        </section>
+
+        <hr class="divider">
+
+        <section id="method">
+            <h2 class="title">
+                <i class="fas fa-flask"></i> Proposed System & Technical Stack
+            </h2>
+            <p class="content">
+                Our approach integrates classical dimensionality reduction with advanced deep learning architectures. 
+                The system involves <strong>Data Preprocessing</strong>, <strong>Dimensionality Reduction</strong> (using PCA for background separation), 
+                and finally <strong>Detection</strong> using trained models.
+            </p>
+            
+            <div class="tech-stack">
+                <div class="card">
+                    <b><i class="fas fa-brain"></i> Core Models</b>
+                    <br>CNN, Autoencoder (AE), PCA+SVM
+                    <button class="toggle-btn" onclick="toggleDetails(this)">
+                        <i class="fas fa-chevron-down"></i> Details
+                    </button>
+                    <div class="toggle-content">
+                        <p style="font-size: 0.95rem; text-align: left; margin-top: 10px;">
+                            • CNNs: For spatial-spectral feature extraction<br>
+                            • Autoencoders: For background reconstruction and anomaly residual calculation<br>
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <b><i class="fas fa-code"></i> Language</b>
+                    <br>Python 3.9+ / HTML / CSS / JS
+                </div>
+                <div class="card">
+                    <b><i class="fas fa-box"></i> Core Libraries</b>
+                    <br>NumPy, TensorFlow/CNN, Scikit-learn
+                </div>
+                <div class="card">
+                    <b><i class="fas fa-database"></i> Target Dataset</b>
+                    <br>Indian Pines, Pavia University
+                </div>
+                <div class="card">
+                    <b><i class="fas fa-server"></i> Deployment</b>
+                    <br>AWS or Any cloud platform
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="detect">
+            <h2 class="title">
+                <i class="fas fa-magic"></i> Try the Live Detection System
+            </h2>
+            <div class="upload-box" id="uploadBox" onclick="document.getElementById('fileInput').click()">
+                <label for="fileInput">
+                    <i class="fas fa-cloud-upload-alt"></i><br>
+                    Upload a Hyperspectral Image (.hdr, .mat, .npy) for Anomaly Detection
+                </label>
+                <input type="file" id="fileInput" accept=".mat,.hdr,.npy" onchange="handleFileSelect(this)">
+                <br>
+                <button class="btn" onclick="detectAnomaly()">
+                    <i class="fas fa-search"></i> Start Detection
+                </button>
+            </div>
+            <p id="result">Ready to Analyze.</p>
+        </section>
+
+        <hr class="divider">
+
+        <section id="contact">
+            <h2 class="title">
+                <i class="fas fa-lightbulb"></i> Future Work & Applications
+            </h2>
+            <p class="content">
+                This research has significant implications for <strong>precision agriculture</strong>, <strong>environmental monitoring</strong> (e.g., oil spill detection), 
+                and <strong>defense/surveillance</strong>. Our immediate future work focuses on optimizing model latency for near-real-time processing 
+                and exploring <strong>Generative Adversarial Networks (GANs)</strong> for data augmentation.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 D.Y. Patil College of Engineering Innovation | Designed by Team MOkaSha</p>
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
