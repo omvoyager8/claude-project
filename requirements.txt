@@ -6,3 +6,4 @@ tensorflow
 opencv-python
 boto3
 flask
+gunicorn
