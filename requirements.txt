@@ -7,3 +7,4 @@ opencv-python
 boto3
 flask
 gunicorn
+flask-cors
