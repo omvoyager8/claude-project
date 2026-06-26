@@ -1,7 +1,7 @@
 from scipy.io import loadmat
 import numpy as np
 
-file_path = r"C:\Users\ACER\indian_pines_corrected (2).mat"   # change to your file
+file_path = r"C:\Users\ACER\Desktop\Mokasha Test\abu-airport-3.mat"   # change to your file
 
 data = loadmat(file_path)
 

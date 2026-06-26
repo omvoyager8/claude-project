@@ -1,9 +1,10 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_file
 from flask_cors import CORS
 import os
 
 from pipeline_runner import process_hyperspectral
 from s3_utils import upload_to_s3
+from report_generator import generate_report
 
 app = Flask(
     __name__,
@@ -60,13 +61,17 @@ def detect():
 
         # Run ML pipeline
         print("Starting anomaly detection pipeline...")
-        result_path = process_hyperspectral(file_path)
+        result_path, stats = process_hyperspectral(file_path)
+
+        # Generate PDF report
+        report_path = generate_report(file.filename, stats, result_path)
 
         print("Pipeline completed successfully")
 
         return jsonify({
             "status": "success",
-            "result_image": f"/static/anomaly_image/{os.path.basename(result_path)}"
+            "result_image": f"/static/output/{os.path.basename(result_path)}",
+            "report_url": "/report"
         })
 
     except Exception as e:
@@ -78,5 +83,14 @@ def detect():
         }), 500
 
 
+@app.route("/report")
+def download_report():
+    report_path = os.path.abspath("static/output/anomaly_report.pdf")
+    if not os.path.exists(report_path):
+        return jsonify({"error": "No report generated yet. Run detection first."}), 404
+    return send_file(report_path, as_attachment=True, download_name="anomaly_report.pdf")
+
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port, debug=False)

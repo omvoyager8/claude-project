@@ -67,7 +67,7 @@ def visualize_hsi(cube):
 
 
 # ---------------- MAIN ----------------
-file_path = r"C:\Users\ACER\Desktop\abu-beach-2.mat"   # change path
+file_path = r"C:\Users\ACER\Desktop\Mokasha Test\abu-airport-3.mat"   # change path
 
 cube = load_hyperspectral(file_path)
 
