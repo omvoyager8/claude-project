@@ -8,8 +8,8 @@ from report_generator import generate_report
 
 app = Flask(
     __name__,
-    template_folder="../templates",
-    static_folder="../static"
+    template_folder="templates",
+    static_folder="static"
 )
 
 CORS(app)
