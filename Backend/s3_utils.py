@@ -1,6 +1,10 @@
 import boto3
 from botocore.exceptions import NoCredentialsError, ClientError
-from config import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION, S3_BUCKET_NAME
+import os
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+AWS_REGION = os.environ.get("AWS_REGION")
+S3_BUCKET_NAME = os.environ.get("S3_BUCKET_NAME")
 
 
 def _get_s3_client():
