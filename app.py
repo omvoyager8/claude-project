@@ -2,9 +2,9 @@ from flask import Flask, request, jsonify, render_template, send_file
 from flask_cors import CORS
 import os
 
-from pipeline_runner import process_hyperspectral
-from s3_utils import upload_to_s3
-from report_generator import generate_report
+from Backend.pipeline_runner import process_hyperspectral
+from Backend.s3_utils import upload_to_s3
+from Backend.report_generator import generate_report
 
 app = Flask(
     __name__,
